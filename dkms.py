@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-
+#
+# Copyright (c) 2023 Advanced Micro Devices, Inc. All Rights Reserved.
+#
+# Author: Sid Srinivasan (sid.srinivasan@amd.com)
+# Check all rocm driver packages installed
+# v1.0 Initial Version
 import subprocess
 
 def get_amdgpu_pkg():
