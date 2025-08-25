@@ -1,0 +1,26 @@
+{
+  "header": {
+    "description": "ROCm TechSupport Log Collection Utility: V1.39",
+    "commands": [
+      "/bin/date"
+    ]
+  },
+  "os_distribution": {
+    "section": "OS Distribution",
+    "commands": [
+      "/bin/uname -a",
+      "/bin/cat /etc/os-release"
+    ],
+    "pkgtype_detection": {
+      "check": "/bin/grep -i -E 'debian|ubuntu' /etc/os-release",
+      "true_case": "deb",
+      "false_case": "rpm"
+    }
+  },
+  "kernel_boot_parameters": {
+    "section": "Kernel Boot Parameters",
+    "commands": [
+      "/bin/cat /proc/cmdline"
+    ]
+  }
+}

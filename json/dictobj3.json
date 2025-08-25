@@ -1,0 +1,11 @@
+{
+        "obj1": {
+                "name":"test"
+        },
+        "rocm": 
+                [ 
+                        {"cmd": "rocm-smi", "expected": "ignore"},
+                        {"cmd": "rocminfo", "expected": "ignore"},
+                        {"cmd": ["rocm-smi", "wc -l"], "expected": "8"}
+                ]
+}
