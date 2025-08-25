@@ -7,9 +7,7 @@
 # v1.0 Initial Version
 import subprocess
 
-def run_two_cmds():
-    cmd1 = ["dpkg", "-l"]
-    cmd2 = ["grep", "amdgpu"] 
+def run_two_cmds(cmd1, cmd2):
     p1 = subprocess.Popen(cmd1, stdout=subprocess.PIPE)
     p2 = subprocess.Popen(cmd2, stdin=p1.stdout, stdout=subprocess.PIPE)
     p1.stdout.close()
@@ -17,4 +15,6 @@ def run_two_cmds():
     return output.decode('utf-8')
 
 if __name__ == "__main__":
-    print(run_two_cmds())
+    cmd1 = ["dpkg", "-l"]
+    cmd2 = ["grep", "amdgpu"] 
+    print(run_two_cmds(cmd1, cmd2))
