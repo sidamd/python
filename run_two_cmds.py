@@ -15,6 +15,6 @@ def run_two_cmds(cmd1, cmd2):
     return output.decode('utf-8')
 
 if __name__ == "__main__":
-    cmd1 = ["dpkg", "-l"]
-    cmd2 = ["grep", "amdgpu"] 
-    print(run_two_cmds(cmd1, cmd2))
+    cmd1 = "dpkg -l"
+    cmd2 = "grep amdgpu" 
+    print(run_two_cmds(cmd1.split(), cmd2.split()))
