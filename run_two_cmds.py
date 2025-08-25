@@ -16,5 +16,5 @@ def run_two_cmds(cmd1, cmd2):
 
 if __name__ == "__main__":
     cmd1 = "dpkg -l"
-    cmd2 = "grep amdgpu" 
+    cmd2 = "grep amdgpu"
     print(run_two_cmds(cmd1.split(), cmd2.split()))
