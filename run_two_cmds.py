@@ -8,6 +8,7 @@
 import subprocess
 import argparse
 
+# take two command arrays
 def run_two_cmds(cmd1, cmd2):
     p1 = subprocess.Popen(cmd1, stdout=subprocess.PIPE)
     p2 = subprocess.Popen(cmd2, stdin=p1.stdout, stdout=subprocess.PIPE)
