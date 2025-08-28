@@ -1,18 +1,35 @@
 import json
 import sys
+import argparse
 
-def dump_json(file_path):
-    try:
-        with open(file_path, "r") as f:
-            data = json.load(f)
-        print(json.dumps(data, indent=4))
-    except Exception as e:
-        print(f"Error reading {file_path}: {e}", file=sys.stderr)
-        sys.exit(1)
+
+def load_json(args):
+        # Load data from provided JSON file
+        print("Processing json input file: ", args.jsonfile[0])
+        try:
+                with open(args.jsonfile[0], 'r') as jsonfile:
+                        jsondata = json.load(jsonfile)
+                        return jsondata
+        except FileNotFoundError:
+                print(f"Error: the file '{args.jsonfile}' was not found")
+        except json.JSONDecodeError:
+                print(f"Error: the file '{args.jsonfile}' is not a valid JSON file")
+        return None
+
+def print_json(jsondata):
+        print(json.dumps(jsondata, indent=4))
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        print(f"Usage: {sys.argv[0]} <json-file>", file=sys.stderr)
-        sys.exit(1)
-    dump_json(sys.argv[1])
+        parser = argparse.ArgumentParser(description="Path to JSON file")
+        parser.add_argument('--jsonfile', nargs=1, dest='jsonfile', required=True, help="Path to the JSON file")
 
+        #Parse arguments
+        args = parser.parse_args()
+
+        #Load JSON file
+        jsondata = load_json(args) 
+        if jsondata is None:
+                print("Failed to process JSON input. Exiting")
+                sys.exit(2)
+
+        print_json(jsondata)
