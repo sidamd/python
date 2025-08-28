@@ -43,6 +43,7 @@ if __name__ == "__main__":
         print_json(jsondata)
 
             # Print section if requested, otherwise dump full JSON
-        print(args.section)
-        print_section(jsondata, args.section[0])
+        if args.section is not None:
+                print(args.section)
+                print_section(jsondata, args.section[0])
 
