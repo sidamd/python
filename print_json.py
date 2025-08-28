@@ -19,9 +19,17 @@ def load_json(args):
 def print_json(jsondata):
         print(json.dumps(jsondata, indent=4))
 
+def print_section(jsondata, section):
+    """Print only a specific section of the JSON file."""
+    if section in jsondata:
+        print(json.dumps(jsondata[section], indent=4))
+    else:
+        print(f"Section '{section}' not found in JSON file.")
+
 if __name__ == "__main__":
         parser = argparse.ArgumentParser(description="Path to JSON file")
         parser.add_argument('--jsonfile', nargs=1, dest='jsonfile', required=True, help="Path to the JSON file")
+        parser.add_argument('--section', nargs=1, dest='section', help="Print only a specific section of the JSON")
 
         #Parse arguments
         args = parser.parse_args()
@@ -33,3 +41,8 @@ if __name__ == "__main__":
                 sys.exit(2)
 
         print_json(jsondata)
+
+            # Print section if requested, otherwise dump full JSON
+        print(args.section)
+        print_section(jsondata, args.section[0])
+
