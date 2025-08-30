@@ -10,6 +10,8 @@ import argparse
 
 # take two command arrays
 def run_two_cmds(cmd1, cmd2):
+    print(type(cmd1))
+    print(type(cmd2))
     p1 = subprocess.Popen(cmd1, stdout=subprocess.PIPE)
     p2 = subprocess.Popen(cmd2, stdin=p1.stdout, stdout=subprocess.PIPE)
     p1.stdout.close()
@@ -22,7 +24,7 @@ if __name__ == "__main__":
     parser.add_argument('--cmd2', nargs=1, dest='cmd2', required=True, help='cmd 2')
     args = parser.parse_args()
 
-#    print("--cmd1 = ", args.cmd1[0])
-#    print("--cmd2 = ", args.cmd2[0])
+    print("--cmd1 = ", args.cmd1[0])
+    print("--cmd2 = ", args.cmd2[0])
 
     print(run_two_cmds(args.cmd1[0].split(), args.cmd2[0].split()))

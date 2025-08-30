@@ -6,7 +6,7 @@ import argparse
 import shlex
 
 def run_one_command(cmd1):
-        p1 = subprocess.run(shlex.split(cmd1), capture_output=True, text=True, shell=True)
+        p1 = subprocess.run(shlex.split(cmd1), capture_output=True, text=True)
         #p1.communicate()[0]
         return p1.stdout
 
