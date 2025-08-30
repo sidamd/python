@@ -54,7 +54,7 @@ def list_section(jsondata, section):
     if CMDS in jsondata[section]:
          for cmd in jsondata[section][CMDS]:
              print(cmd)
-  
+ 
     if PIPE2CMDS in jsondata[section]:
          print(jsondata[section][PIPE2CMDS][0], "|", jsondata[section][PIPE2CMDS][1])
 
@@ -66,7 +66,7 @@ def run_all_sections(jsondata):
             for cmd in jsondata[section][CMDS]:
                 print(run_one_command(cmd))
         if PIPE2CMDS in jsondata[section]:
-            print(run_pipe_cmds(jsondata[section][PIPE2CMDS][0], jsondata[section][PIPE2CMDS][1]))    
+            print(run_pipe_cmds(jsondata[section][PIPE2CMDS][0], jsondata[section][PIPE2CMDS][1]))
 
 def run_section(jsondata, section):
     if CMD in jsondata[section]:
